@@ -1,2 +1,16 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
+
+<% if (result) { %>
+    <p><%= result.length %> Results Found</p>
+<% result.forEach(result => { %>
+    <p>Title: <a href="/results/<%= result.imdbId %>"><%= result.Title %></a></p>
+    <p>Year: <%= result.Year %></p>
+    <% if (result.Poster !== 'N/A') { %>
+        <img src="<%= result.Poster %>">
+    <% } %>
+    <hr>
+<% }) %>
+<% } else { %>
+    <h3>No Results Found</h3>
+<% } %>
